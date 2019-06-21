@@ -157,11 +157,19 @@ bar {
 
 # My Config
 
+# Lock screen
+bindsym $mod+b exec i3lock -i ~/Pictures/mountain.png
+
+
+# Screens config
+set $screen DP-1
+exec --no-startup-id xrandr --output "$screen" --above "eDP-1" --auto
+
 # Touchpad config
 set $touchpad DELL08AF:00 06CB:76AF Touchpad
-#exec --no-startup-id xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "$touchpad" "libinput Natural Scrolling Enabled" 1
-#exec --no-startup-id xinput set-prop "$touchpad" "libinput Disable While Typing Enabled" 0
+exec --no-startup-id xinput set-prop "$touchpad" "libinput Disable While Typing Enabled" 1
 
 
 # Create Log out, Reboot, Poweroff bindings
@@ -178,4 +186,4 @@ mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
 bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
 
 bindsym $mod+g exec /usr/bin/google-chrome
-
+bindsym $mod+n exec /usr/bin/code
