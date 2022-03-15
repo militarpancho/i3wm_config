@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -173,6 +173,10 @@ exec --no-startup-id xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "$touchpad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id xinput set-prop "$touchpad" "libinput Disable While Typing Enabled" 1
 
+# Redshift
+exec --no-startup-id redshift-gtk -l 40.416775:-3.703790
+
+
 # Pulse Audio controls
 set $soundcard alsa_output.pci-0000_00_1f.3.analog-stereo
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $soundcard +5% #increase sound volume
@@ -196,5 +200,19 @@ mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
 
 bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
 
-bindsym $mod+g exec /usr/bin/google-chrome
-bindsym $mod+n exec /usr/bin/code
+bindsym $mod+o exec xandr -s 0
+
+
+bindsym $mod+g exec /usr/bin/google-chrome-stable --profile-directory="Default"
+bindsym $mod+Shift+g exec /usr/bin/google-chrome-stable --profile-directory="Profile 2"
+bindsym $mod+c exec /usr/bin/code
+bindsym $mod+z exec /usr/bin/zeal
+
+# Bind Backlight with light
+
+bindsym XF86MonBrightnessUp exec light -A 5
+
+bindsym XF86MonBrightnessDown exec light -U 5
+
+# Deactivate touchpad
+#xinput set-prop 12 "Device Enabled" 0
